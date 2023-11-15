@@ -153,7 +153,7 @@ def load_shed(emissions, load, proportion_shedable, shedable_window_length):
         emissions (list or numpy array): time series of MOER readings
         load (list or numpy array): time series of baseline energy consumption for a specific end use
         proportion_shedable (float): the proportion of load that can be shedded per timestep
-        shiftable_window_length (int): the size of the time window in which load shift can be applied
+        shiftable_window_length (int): the size of the time window in which load shed can be applied
     
     Returns:
         new_load: new load curve as time series (length T)
@@ -161,7 +161,8 @@ def load_shed(emissions, load, proportion_shedable, shedable_window_length):
     assert len(emissions) == len(load), "time series must all be the same length"
     assert 0 <= proportion_shedable <= 1, "proportion_shedable must be between 0 and 1"
 
-    rolling_sum = [sum(emissions[i:i+shedable_window_length]) for i in range(len(emissions) - shedable_window_length)]
+    rolling_sum = [sum(emissions[i : i+shedable_window_length]) for i in range(len(emissions) - shedable_window_length)]
     start_of_shed = np.argmax(rolling_sum)
-    new_load = list(load[:start_of_shed]) + list(proportion_shedable * np.array(load[start_of_shed : start_of_shed + shedable_window_length])) + list(load[start_of_shed + shedable_window_length:])
+    new_load = list(load[:start_of_shed]) + list((1 - proportion_shedable) * np.array(load[start_of_shed : start_of_shed + shedable_window_length])) + list(load[start_of_shed + shedable_window_length:])
     return np.array(new_load)
+
