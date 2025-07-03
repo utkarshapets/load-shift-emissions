@@ -10,7 +10,7 @@ This code is designed to interface with marginal emissions intensities (MOERs) f
 
 ### Wattime MOER Data
 
-The [Wattime API](https://docs.watttime.org/) provides access to real-time, forecasted, and historical Marginal Operating Emissions Rate (MOER) in units of kg CO$_2$ / MWh for electric grids around the world. Users without a subscription can access MOERs for the CAISO_NORTH region, which is analyzed in the numerical study in the paper.
+The [Wattime API](https://docs.watttime.org/) provides access to real-time, forecasted, and historical Marginal Operating Emissions Rate (MOER) in units of kg $\text{CO}_2$ / MWh for electric grids around the world. Users without a subscription can access MOERs for the CAISO_NORTH region, which is analyzed in the numerical study in the paper.
 
 ### NREL Load Profiles
 
