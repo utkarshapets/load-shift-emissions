@@ -69,10 +69,10 @@ def load_shift_penalty(emissions, load, time_series_differential, proportion_shi
 
     new_load_lower = np.array(load) - shiftable_load * np.array([1 if i == peak_MOER_timestep else 0 for i in range(T)])
 
-    load_delta_times = [1 + 0.055*(i - peak_MOER_timestep)/4 if ((i <= peak_MOER_timestep + shiftable_window_length) \
+    load_delta_times = [1 + 0.05*(i - peak_MOER_timestep)/4 if ((i <= peak_MOER_timestep + shiftable_window_length) \
                           and (i >= peak_MOER_timestep)) \
                           else(
-                              1 + 0.055*(peak_MOER_timestep - i)/4 if ((i <= peak_MOER_timestep) \
+                              1 + 0.05*(peak_MOER_timestep - i)/4 if ((i <= peak_MOER_timestep) \
                           and (i >= peak_MOER_timestep - shiftable_window_length)) \
                           else 0) for i in range(T)
                         ]
@@ -123,7 +123,7 @@ def load_shift_refrigerator(emissions, load, time_series_differential, proportio
 
     new_load_lower = np.array(load) - shiftable_load * np.array([1 if i == peak_MOER_timestep else 0 for i in range(T)])
 
-    load_delta_times = [1 + 0.055*(i - peak_MOER_timestep)/4 if ((i <= peak_MOER_timestep + shiftable_window_length) \
+    load_delta_times = [1 + 0.05*(i - peak_MOER_timestep)/4 if ((i <= peak_MOER_timestep + shiftable_window_length) \
                           and (i >= peak_MOER_timestep)) \
                           else 0 for i in range(T)
                         ]
